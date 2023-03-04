@@ -166,8 +166,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let a8: Vec<u8> = TOY_VECTOR_REF_LEN8.iter().map(|x| x.into()).collect();
     let b8: Vec<u8> = TOY_VECTOR_A_LEN8.iter().map(|x| x.into()).collect();
 
-    println!("THIS IS BROKEN! We need to encode the integers to u4 rather than u2: there are more than u2 differences between these two values.")
-    hamming_distance(&a8, &b8);
+    println!("THIS IS BROKEN! We need to encode the integers to u4 rather than u2: there are more than u2 differences between these two values.");
+    hamming_distance(&a8, &b8)?;
 
     Ok(())
 }
