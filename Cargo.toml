@@ -6,4 +6,4 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-concrete = { version = "0.2.0", features=["shortints", "booleans"] }
+concrete = { version = "0.2.0", features=["shortints", "booleans", "integers"] }

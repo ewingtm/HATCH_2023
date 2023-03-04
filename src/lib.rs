@@ -1,4 +1,5 @@
 pub mod toy_dataset;
+pub mod vcf_runtime;
 use std::fmt;
 
 #[derive(Debug)]
