@@ -65,6 +65,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "13da2941c20d630835417e98dd55e1ad7a07116a77a27d98bb11f7e5f23aec69"
 dependencies = [
  "concrete-boolean",
+ "concrete-integer",
  "concrete-shortint",
  "paste",
 ]
@@ -116,6 +117,18 @@ dependencies = [
  "aligned-vec",
  "dyn-stack",
  "num-complex",
+ "serde",
+]
+
+[[package]]
+name = "concrete-integer"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2fefd740a574a83ae8f0ec5ef529c7d090857292e5473aa88ad84ebb260c8f02"
+dependencies = [
+ "concrete-core",
+ "concrete-shortint",
+ "rayon",
  "serde",
 ]
 
