@@ -29,14 +29,14 @@ print(similarity_lists)
 
 similarity_matrix = similarity_lists
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(1, 1)
 im = ax.imshow(similarity_matrix)
 
 cbar = ax.figure.colorbar(im, ax=ax)
 
-ax.set_xticks(np.arange(len(similarity_matrix)))
+#ax.set_xticks(np.arange(len(similarity_matrix)))
 ax.set_yticks(np.arange(len(similarity_matrix)))
-ax.set_xticklabels(names)
+#ax.set_xticklabels(names)
 ax.set_yticklabels(names)
 
 ax.xaxis.tick_top()
@@ -51,7 +51,7 @@ plt.setp(ax.get_xticklabels(), rotation=90, ha="left",
 ax.autoscale(enable=True)
 
 plt.tight_layout()
-plt.savefig("similarity-matrix.png", dpi=300)
+plt.savefig("./img/similarity-matrix.png", dpi=300)
 
 # Show the plot
 plt.show()
