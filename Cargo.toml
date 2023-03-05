@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 concrete = { version = "0.2.0", features=["shortints", "booleans", "integers"] }
+rand = "0.8.5"

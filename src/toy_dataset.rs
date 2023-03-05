@@ -1,4 +1,5 @@
 // TOY DATA.
+use rand::Rng;
 
 use crate::Nucleotide;
 
@@ -30,3 +31,39 @@ pub const TOY_VECTOR_A_LEN8: [Nucleotide; 8] = [
     Nucleotide::G,
     Nucleotide::G,
 ];
+
+/// A distribution to sample from: A, A, A, A, T, T, T, C, C, G.
+pub const SAMPLE_DIST: [Nucleotide; 9] = [
+    Nucleotide::A,
+    Nucleotide::A,
+    Nucleotide::A,
+    Nucleotide::T,
+    Nucleotide::T,
+    Nucleotide::T,
+    Nucleotide::C,
+    Nucleotide::C,
+    Nucleotide::G,
+];
+
+/// Generate a random nucleotide sequences
+fn generate_random<const N: usize, R: Rng>(rng: &mut R) -> [Nucleotide; N] {
+    let mut out = [Nucleotide::A; N];
+    for i in 0..N {
+        let r = rng.gen::<u8>();
+        let n: Nucleotide = r.into();
+        out[i] = n;
+    }
+
+    out
+}
+
+/// Genrate a random nucleotide sequence from the distribution.
+fn generate_distribution<const N: usize, R: Rng>(rng: &mut R) -> [Nucleotide; N] {
+    let mut out = [Nucleotide::A; N];
+    for i in 0..N {
+        let n: Nucleotide = SAMPLE_DIST[rng.gen::<usize>() % 9];
+        out[i] = n;
+    }
+
+    out
+}
