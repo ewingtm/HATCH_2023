@@ -81,12 +81,14 @@ fn homomorphic_adj(samples: &[Vec<u8>]) -> [[u8; SAMPLES]; SAMPLES] {
         .collect();
 
     // Begin computing the hamming distance for each value. Of note, this is
-    // embarassingly parallel.
+    // embarassingly parallel. All the way down to the individual vector calculations
+    // in the nucleotide.
     let mut adj = vec![];
     for i in 0..SAMPLES {
         let mut tmp = vec![];
         for j in 0..SAMPLES {
             tmp.push(hamming(&samples_enc[i], &samples_enc[j]));
+            println!("Computed {},{}", i, j);
         }
 
         adj.push(tmp);
@@ -174,10 +176,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Compute an adjacency matrix without encryption.
     let adj = reg_adj(&samples_u8);
 
-    println!("### Computing enc.");
-    // Compute it with encryption for fun.
-    let enc_dec_adj = homomorphic_adj(&samples_u8);
-
     // Print out CSV to stdout.
     println!("### 10 WEIGHTED AND 10 UNIFORM SAMPLE");
     for i in 0..SAMPLES {
@@ -186,6 +184,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
         println!("");
     }
+
+    println!("### Computing enc.");
+    // Compute it with encryption for fun: if you've gotten this far and you're running this: this computation
+    // will probably never finish. This is some massive computation of polynomials (400 total distance calculations
+    // between 16 length vectors of Fhe4). My inclination is that this can run entirely in parallel, it operates
+    // on seperately encoded Fhe4s. Remember, neural networks were a joke before AlexNet in 2012 which put them on
+    // GPUs!
+    let enc_dec_adj = homomorphic_adj(&samples_u8);
 
     Ok(())
 }
