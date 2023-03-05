@@ -1,5 +1,5 @@
+/// Shared, core data.
 pub mod toy_dataset;
-pub mod vcf_runtime;
 use std::fmt;
 
 #[derive(Debug, Copy, Clone)]
@@ -11,7 +11,7 @@ pub enum Nucleotide {
 }
 
 // Nucleotide -> U8.
-
+// TODO: These aren't really needed. You get them for free from Into.
 impl Into<u8> for Nucleotide {
     fn into(self) -> u8 {
         match self {
@@ -73,6 +73,6 @@ struct VCFEntry {
     // for the index of the father/mother pair.
     // alt: [Option<Nucleotide>; 3],
 
-    // The father/mother incidence of the nucleotide.
+    // The father/mother incidence of the nucleotide. This is the phase?
     rep_father_mother: Vec<[Nucleotide; 2]>,
 }
