@@ -2,7 +2,7 @@ pub mod toy_dataset;
 pub mod vcf_runtime;
 use std::fmt;
 
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone)]
 pub enum Nucleotide {
     A,
     T,
@@ -30,6 +30,18 @@ impl Into<u8> for &Nucleotide {
             &Nucleotide::T => 1u8,
             &Nucleotide::C => 2u8,
             &Nucleotide::G => 3u8,
+        }
+    }
+}
+
+impl From<u8> for Nucleotide {
+    fn from(value: u8) -> Nucleotide {
+        match (value % 4) {
+            0 => Nucleotide::A,
+            1 => Nucleotide::T,
+            2 => Nucleotide::C,
+            3 => Nucleotide::G,
+            _ => unreachable!(),
         }
     }
 }
