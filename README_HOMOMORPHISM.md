@@ -42,5 +42,5 @@ the broader lattice landscape that's received significant work the last few year
 [^1]: You do learn some information however, the hamming distance. Repeated queries lead you to
 a fun chosen plaintext attack. 1. The attacker controls one of the sequences. They query the oracle for the hamming distance
 from the other sequence. 2. If the distance isn't zero, the attacker flips a bit at a starting index, then queries again.
-If the hamming distance has dropped, the attacker knows the value at that position of the sequence.
-3. This can be iteratively done, eventually arriving at the correct sequence. 
+If the hamming distance has dropped, the attacker knows the value at that position of the sequence. 3. This can be iteratively done, 
+eventually arriving at the correct sequence. 
