@@ -16,6 +16,9 @@ might use: say, computing the hamming distance between two sequences. An example
 two sequences of nucleotides without revealing any specific information[^1] about the configuration of 
 the nucleotides.
 
+See `hamming.png` for a screenshot of a very simple toy example.
+
+
 This can be expanded: we can build an adjacency matrix of all hamming distances of a set of
 sequences. An example* (code is included for enc, but you'd truly need a proper parallel model)
 is shown with some toy data. This distance matrix could be utilized for clustering, the building
